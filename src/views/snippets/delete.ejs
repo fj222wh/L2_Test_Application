@@ -1,0 +1,13 @@
+<main id="deleteMain">
+    <%- include('../partials/flash') %>
+
+    <h1>Are you sure you want to delete this snippet?</h1>
+    <form action="/snippet/<%= viewData.id %>/delete" method="post" id="deleteForm"> 
+
+    <div class="buttons">
+        <button type="submit" id="confirmDeleteBtn">Yes</button>
+        <a href=".." id="cancelDeleteBtn">No, go back!</a>
+    </div>
+
+</form>
+</main>

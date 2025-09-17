@@ -1,0 +1,47 @@
+<main>
+    <%- include('../partials/flash') %>
+
+    <div id="snippetInstruction">
+        <h1>Snippets</h1>
+        <p>View all of the snippets here!</p>
+
+        <% if (user) { %>
+            <p>Click <a href="/snippet/create">here</a> to create a new snippet!</p>
+        <% } %>
+    </div>
+
+    <% if (viewData?.data?.length) { %>
+        <div id="snippet-container">
+            <% viewData.data.forEach(code => { %>
+                <div class="snippet">
+                    <pre><code><%= code.snippet %></code></pre>
+
+                    <div class="snippet-info-container">
+                        <div class="snippet-info">
+                            <p>Created by: <%= code.author %></p>
+                            <p>Last edited: <%= code.dateUpdatedAt %></p>
+                        </div>
+
+                        <% if (user && code.authorID === user.id) { %>
+                            <div class="snippet-options">
+                                <a href="/snippet/<%= code.id %>/delete" class="snippet-options-icons">
+                                    <img src="/images/delete-icon.svg" alt="delete-icon">
+                                </a>
+                                <a href="/snippet/<%= code.id %>/update" class="snippet-options-icons">
+                                    <img src="/images/edit-icon.svg" alt="edit-icon">
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p>There are no snippets created yet!</p>
+        <% if (user) { %>
+            <p>Click <a href="/snippet/create">here</a> to create a snippet!</p>
+        <% } else { %>
+            <p>Login <a href="/user/login">here</a> to be able to create your own snippet!</p>
+        <% } %>
+    <% } %>
+</main>

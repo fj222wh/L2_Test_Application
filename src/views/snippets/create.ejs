@@ -1,0 +1,15 @@
+<main id="snippet-main">
+    <%- include('../partials/flash') %>
+    
+    <h1>Create a new snippet</h1>
+    <form action="/snippet/create/" method="post" id="snippet-form">
+        <label for="snippet">
+            <textarea name="snippet" id="snippet" placeholder="Write your snippet here!" autofocus></textarea>
+        </label>
+        
+        <div class="buttons">
+            <button type="submit">Save</button>
+            <a href="/snippet">Cancel</a>
+        </div>
+    </form>
+</main>

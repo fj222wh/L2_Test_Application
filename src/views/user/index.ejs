@@ -1,0 +1,46 @@
+<div id="profile">
+    <div id="settings">
+        <a href="/user/logout" id="logout">Log Out</a>
+    </div>
+    <h1>Welcome <%= user.fname %> <%= user.lname %>!</h1>
+</div>
+
+<main>
+    <%- include('../partials/flash') %>
+
+    <div id="user-data">
+        <p><span class="header">Full Name:</span> <%= user.fname + ' ' + user.lname %></p>
+        <p><span class="header">Username:</span> <%= user.username %></p>
+        <p><span class="header">ID:</span> <%= user.id %></p>
+    </div>
+
+    <h2>Your snippets:</h2>
+
+    <% if (viewData?.data?.length) { %>
+        <div id="snippet-container">
+            <% viewData.data.forEach(code => { %>
+                <div class="snippet">
+                    <pre><code><%= code.snippet %></code></pre>
+
+                    <div class="snippet-info-container">
+                        <div class="snippet-info">
+                            <p>Created by: <%= code.author %></p>
+                            <p>Last edited: <%= code.dateUpdatedAt %></p>
+                        </div>
+
+                        <% if (user && code.authorID === user.id) { %>
+                            <div class="snippet-options">
+                                <a href="/snippet/<%= code.id %>/delete" class="snippet-options-icons">
+                                    <img src="/images/delete-icon.svg" alt="delete-icon">
+                                </a>
+                                <a href="/snippet/<%= code.id %>/update" class="snippet-options-icons">
+                                    <img src="/images/edit-icon.svg" alt="edit-icon">
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</main>

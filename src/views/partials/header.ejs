@@ -1,0 +1,16 @@
+<nav>
+    <ul>
+        <% if (user) { %>
+            <li><a href="/user" class="nav-user">My profile</a></li>
+        <% } else { %>
+            <li><a href="/user/login" class="nav-user">Log in</a></li>
+        <% } %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/snippet">Snippets</a></li>
+
+        <% if (user) { %>
+            <li><a href="/snippet/create">Create</a></li>
+        <% } %>
+    </ul>
+    <a href="/"><img src="/images/lnu-logo.png" alt=""></a>
+</nav>

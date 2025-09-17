@@ -1,0 +1,16 @@
+<main>
+    <%- include('../partials/flash') %>
+
+    <h1>Update post here!</h1>
+    <form action="/snippet/<%= viewData.id %>/update" method="post" id="snippet-form">
+        <label for="updatedSnippet">
+            <textarea name="updatedSnippet" id="snippet" required autofocus><%= viewData.snippet %></textarea>
+        </label>
+
+        <div class="buttons">
+            <button type="submit">Save</button>
+            <a href="/snippet">Cancel</a>
+            <a href="/snippet/<%= viewData.id %>/delete">Delete</a>
+        </div>
+    </form>
+</main>
